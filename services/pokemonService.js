@@ -2,6 +2,7 @@ const lowdb = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('../pokemon.json');
 const db = lowdb(adapter);
+const pokemonEndpoint = 'pokemons';
 
 db.defaults({ pokemons: [] }).write();
 
@@ -26,12 +27,13 @@ exports.insert = (pokemon) => {
             errorMessage: `Pokemon ${name} already exist.`,
         };
     }
-
-    db.get('pokemons').push(pokemon).write();
+    else{
+        db.get('pokemons').push(pokemonEndpoint).write();
 
     return {
         success: true,
     };
+    }    
 };
 
 exports.get = () => {

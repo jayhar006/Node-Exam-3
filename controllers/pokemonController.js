@@ -41,13 +41,13 @@ exports.handlePostRequest = (req, res) => {
                 'Content-Type': 'application/json',
             });
             res.write(JSON.stringify(result));
-            res.end();
         }
-
-        res.writeHead(200, {
-            'Content-Type': 'application/json',
-        });
-        res.write(JSON.stringify(result));
+        else{
+            res.writeHead(200, {
+                'Content-Type': 'application/json',
+            });
+            res.write(JSON.stringify(result));
+        }
         res.end();
     });
 };
@@ -77,16 +77,14 @@ exports.handlePutRequest = (req, res) => {
                     'Content-Type': 'application/json',
                 });
                 res.write(JSON.stringify(result));
-                res.end();
             } else {
     
                 res.writeHead(200, {
                     'Content-Type': 'application/json',
                 });
                 res.write(JSON.stringify(result));
-                res.end();
             }
-
+            res.end();
         });
 
     } else {
@@ -100,8 +98,8 @@ exports.handlePutRequest = (req, res) => {
         });
         res.write(JSON.stringify(errorMsg));
         res.end();
-
     }
+    
 
 };
 
@@ -117,7 +115,6 @@ exports.handleDeleteRequest = (req, res) => {
             'Content-Type': 'application/json',
         });
         res.write(JSON.stringify(result));
-        res.end();
 
     } else {
         const errorMsg = {
@@ -129,7 +126,6 @@ exports.handleDeleteRequest = (req, res) => {
             'Content-Type': 'application/json',
         });
         res.write(JSON.stringify(errorMsg));
-        res.end();
-
     }
+    res.end();
 };
